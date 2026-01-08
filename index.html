@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jardinagem profissional, simples e sem dor de cabeça. Solicite seu orçamento de corte de grama.">
+    <meta name="description" content="Jardinagem profissional, simples e sem dor de cabeça. Solicite seu orçamento de corte de grama em Amambai-MS.">
     <title>Jardinagem Profissional - Orçamento Rápido</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -265,6 +265,15 @@
             border-color: var(--green-main);
             box-shadow: 0 0 0 3px rgba(30, 127, 77, 0.1);
         }
+        
+        /* Estilo para campo desativado (fixo) */
+        .form-control:disabled, .form-control[readonly] {
+            background-color: #E5E7EB; /* Cinza claro */
+            color: #374151; /* Texto escuro */
+            font-weight: 600;
+            cursor: not-allowed;
+            border-color: #D1D5DB;
+        }
 
         /* Radio Buttons Custom Style */
         .radio-group {
@@ -416,7 +425,7 @@
     <header class="hero">
         <div class="container text-center">
             <h1>Jardinagem profissional,<br>simples e sem dor de cabeça.</h1>
-            <p>Corte de grama rápido, limpo e no horário certo.</p>
+            <p>Corte de grama rápido, limpo e no horário certo em Amambai.</p>
             <a href="#orcamento" class="btn">Solicitar orçamento</a>
         </div>
     </header>
@@ -479,9 +488,12 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="text" id="bairro" class="form-control" placeholder="Bairro / Cidade">
+                    <input type="text" id="bairro" class="form-control" placeholder="Digite seu Bairro" required>
                 </div>
 
+                <div class="form-group">
+                    <input type="text" class="form-control" value="AMAMBAI-MS" readonly>
+                </div>
                 <div class="form-group">
                     <label>Tamanho do terreno:</label>
                     <div class="radio-group">
@@ -541,7 +553,7 @@
                     <img src="assets/img/icon-instagram.png" alt="Instagram" class="footer-icon">
                 </a>
             </div>
-            <p class="copyright">Atendimento rápido e profissional</p>
+            <p class="copyright">Atendimento rápido e profissional em Amambai</p>
         </div>
     </footer>
 
@@ -555,8 +567,8 @@
             
             // --- CONFIGURAÇÃO ---
             // Coloque o número do WhatsApp da empresa aqui (formato internacional sem +)
-            // Ex: 55 + DDD + Numero. Ex: 5511999999999
-            const COMPANY_PHONE = "5511999999999"; 
+            // Ex: 55 + DDD + Numero. Ex: 5567999999999
+            const COMPANY_PHONE = "5567999999999"; 
 
             const form = document.getElementById('contactForm');
             const floatBtn = document.getElementById('floatBtn');
@@ -592,11 +604,11 @@
                     dataFormatada = d.toLocaleDateString('pt-BR');
                 }
 
-                // 4. Montar Mensagem
+                // 4. Montar Mensagem - ALTERADO PARA INCLUIR CIDADE FIXA
                 const message = `Olá! Quero solicitar um orçamento de jardinagem.\n\n` +
                                 `👤 *Nome:* ${nome}\n` +
                                 `📱 *WhatsApp:* ${whatsapp}\n` +
-                                `📍 *Bairro/Cidade:* ${bairro}\n` +
+                                `📍 *Local:* ${bairro} - AMAMBAI/MS\n` +
                                 `🌱 *Terreno:* ${tamanho}\n` +
                                 `📅 *Data desejada:* ${dataFormatada}`;
 
@@ -613,7 +625,7 @@
             // Abre o WhatsApp direto apenas com um "Olá"
             floatBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                const msg = encodeURIComponent("Olá, gostaria de agendar um orçamento.");
+                const msg = encodeURIComponent("Olá, gostaria de agendar um orçamento em Amambai.");
                 window.open(`https://wa.me/${COMPANY_PHONE}?text=${msg}`, '_blank');
             });
 
