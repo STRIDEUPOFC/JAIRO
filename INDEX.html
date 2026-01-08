@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jardinagem profissional, simples e sem dor de cabeça. Solicite seu orçamento de corte de grama.">
+    <title>Jardinagem Profissional - Orçamento Rápido</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- VARIÁVEIS CSS --- */
+        :root {
+            --green-main: #1E7F4D;
+            --green-hover: #16663d;
+            --green-light: #E9F5EF;
+            --white: #FFFFFF;
+            --gray-text: #6B7280;
+            --gray-title: #1F2937;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --radius: 8px;
+            --container-width: 1024px;
+        }
+
+        /* --- RESET & GLOBAL --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F9FAFB;
+            color: var(--gray-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        h1, h2, h3 {
+            color: var(--gray-title);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- UTILITÁRIOS --- */
+        .container {
+            width: 90%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .text-center { text-align: center; }
+        
+        .section-padding { padding: 4rem 0; }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--green-main);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--green-hover);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background-color: #FAFAFA;
+            padding: 5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #111827;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--gray-text);
+        }
+
+        @media(min-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+        }
+
+        /* --- COMO FUNCIONA --- */
+        .how-it-works {
+            background-color: var(--white);
+        }
+
+        .section-title {
+            margin-bottom: 3rem;
+            font-size: 1.5rem;
+            color: #374151;
+        }
+
+        .steps-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 300px;
+        }
+
+        .step-icon {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+        }
+
+        .step-text {
+            font-size: 0.95rem;
+            color: #4B5563;
+        }
+
+        @media(min-width: 768px) {
+            .steps-grid {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+        }
+
+        /* --- NOSSOS SERVIÇOS --- */
+        .services {
+            background-color: #F3F4F6;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+        }
+
+        .service-title {
+            font-weight: 600;
+            color: #374151;
+            font-size: 1rem;
+        }
+
+        @media(min-width: 640px) {
+            .services-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media(min-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        /* --- FORMULÁRIO (ORÇAMENTO) --- */
+        .budget-section {
+            background-color: var(--green-light);
+        }
+
+        .budget-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .budget-title {
+            color: var(--green-main);
+            margin-bottom: 2rem;
+            font-size: 1.75rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #4B5563;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #D1D5DB;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: var(--white);
+        }
+
+        .form-control:focus {
+            border-color: var(--green-main);
+            box-shadow: 0 0 0 3px rgba(30, 127, 77, 0.1);
+        }
+
+        /* Radio Buttons Custom Style */
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+            background: var(--white);
+            padding: 0.8rem;
+            border-radius: var(--radius);
+            border: 1px solid #D1D5DB;
+            justify-content: space-around;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .radio-option input[type="radio"] {
+            accent-color: var(--green-main);
+            width: 1.2rem;
+            height: 1.2rem;
+            cursor: pointer;
+        }
+
+        .radio-option span {
+            font-size: 0.95rem;
+            color: #374151;
+        }
+
+        /* --- ANTES E DEPOIS --- */
+        .gallery {
+            background-color: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        @media(min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* --- FOOTER --- */
+        .site-footer {
+            background-color: #F3F4F6;
+            padding: 2rem 0;
+            border-top: 1px solid #E5E7EB;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-icon {
+            width: 28px;
+            height: 28px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .footer-icon:hover { opacity: 1; }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: #9CA3AF;
+        }
+
+        /* --- BOTÃO FLUTUANTE --- */
+        .float-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366; /* Cor oficial WhatsApp */
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .float-btn:hover {
+            transform: translateY(-2px);
+            background-color: #20bd5a;
+        }
+
+        .float-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Helpers para texto auxiliar */
+        .text-sm { font-size: 0.875rem; }
+        .text-gray { color: #6B7280; }
+
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container text-center">
+            <h1>Jardinagem profissional,<br>simples e sem dor de cabeça.</h1>
+            <p>Corte de grama rápido, limpo e no horário certo.</p>
+            <a href="#orcamento" class="btn">Solicitar orçamento</a>
+        </div>
+    </header>
+
+    <section class="how-it-works section-padding">
+        <div class="container">
+            <h2 class="section-title text-center">Como Funciona</h2>
+            <div class="steps-grid">
+                <div class="step-item">
+                    <img src="assets/img/icon-location.png" alt="Local" class="step-icon">
+                    <p class="step-text">Você informa o local</p>
+                </div>
+                <div class="step-item">
+                    <img src="assets/img/icon-calendar.png" alt="Data" class="step-icon">
+                    <p class="step-text">Escolhe o melhor dia</p>
+                </div>
+                <div class="step-item">
+                    <img src="assets/img/icon-leaf.png" alt="Cuidado" class="step-icon">
+                    <p class="step-text">Nós cuidamos do resto</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services section-padding">
+        <div class="container">
+            <h2 class="section-title text-center">Nossos Serviços</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="assets/img/service-mower.png" alt="Corte de Grama" class="service-icon">
+                    <h3 class="service-title">Corte de Grama</h3>
+                </div>
+                <div class="service-card">
+                    <img src="assets/img/service-calendar.png" alt="Manutenção" class="service-icon">
+                    <h3 class="service-title">Manutenção Periódica</h3>
+                </div>
+                <div class="service-card">
+                    <img src="assets/img/service-cleaning.png" alt="Limpeza" class="service-icon">
+                    <h3 class="service-title">Limpeza de Terreno</h3>
+                </div>
+                <div class="service-card">
+                    <img src="assets/img/service-shears.png" alt="Ajustes" class="service-icon">
+                    <h3 class="service-title">Ajustes e Acabamentos</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="orcamento" class="budget-section section-padding">
+        <div class="container text-center budget-container">
+            <h2 class="budget-title">Solicite seu Orçamento</h2>
+            
+            <form id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="nome" class="form-control" placeholder="Nome" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="tel" id="whatsapp" class="form-control" placeholder="WhatsApp (somente números)" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" id="bairro" class="form-control" placeholder="Bairro / Cidade">
+                </div>
+
+                <div class="form-group">
+                    <label>Tamanho do terreno:</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="tamanho" value="Pequeno" checked>
+                            <span>Pequeno</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="tamanho" value="Médio">
+                            <span>Médio</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="tamanho" value="Grande">
+                            <span>Grande</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="date" id="data" class="form-control" title="Data Desejada">
+                </div>
+
+                <button type="submit" class="btn btn-full" style="margin-top: 1rem;">Quero meu orçamento</button>
+            </form>
+            <p class="text-sm text-gray" style="margin-top: 1rem;">Atendimento rápido, serviço limpo e grama sempre no ponto certo.</p>
+        </div>
+    </section>
+
+    <section class="gallery section-padding">
+        <div class="container">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <span class="badge">Antes</span>
+                    <img src="assets/img/before-1.png" alt="Terreno antes" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <span class="badge">Depois</span>
+                    <img src="assets/img/after-1.png" alt="Terreno depois" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/before-2.png" alt="Jardim antes" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/img/after-2.png" alt="Jardim depois" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-icons">
+                <a href="#" target="_blank">
+                    <img src="assets/img/icon-whatsapp.png" alt="WhatsApp" class="footer-icon">
+                </a>
+                <a href="#" target="_blank">
+                    <img src="assets/img/icon-instagram.png" alt="Instagram" class="footer-icon">
+                </a>
+            </div>
+            <p class="copyright">Atendimento rápido e profissional</p>
+        </div>
+    </footer>
+
+    <a href="#" id="floatBtn" class="float-btn">
+        <img src="assets/img/icon-whatsapp-white.png" alt="Zap" class="float-icon">
+        <span>Agendar orçamento</span>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- CONFIGURAÇÃO ---
+            // Coloque o número do WhatsApp da empresa aqui (formato internacional sem +)
+            // Ex: 55 + DDD + Numero. Ex: 5511999999999
+            const COMPANY_PHONE = "5511999999999"; 
+
+            const form = document.getElementById('contactForm');
+            const floatBtn = document.getElementById('floatBtn');
+
+            // --- FUNÇÃO DE ENVIO DO FORMULÁRIO ---
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // 1. Capturar valores
+                const nome = document.getElementById('nome').value.trim();
+                const whatsapp = document.getElementById('whatsapp').value.trim();
+                const bairro = document.getElementById('bairro').value.trim();
+                const tamanho = document.querySelector('input[name="tamanho"]:checked').value;
+                const data = document.getElementById('data').value;
+
+                // 2. Validação básica
+                if (!nome) {
+                    alert("Por favor, preencha seu nome.");
+                    return;
+                }
+                
+                // Remove caracteres não numéricos do telefone
+                const cleanPhone = whatsapp.replace(/\D/g, '');
+                if (cleanPhone.length < 8) {
+                    alert("Por favor, insira um número de WhatsApp válido.");
+                    return;
+                }
+
+                // 3. Formatar data (opcional, para ficar bonito PT-BR)
+                let dataFormatada = "A combinar";
+                if(data) {
+                    const d = new Date(data);
+                    dataFormatada = d.toLocaleDateString('pt-BR');
+                }
+
+                // 4. Montar Mensagem
+                const message = `Olá! Quero solicitar um orçamento de jardinagem.\n\n` +
+                                `👤 *Nome:* ${nome}\n` +
+                                `📱 *WhatsApp:* ${whatsapp}\n` +
+                                `📍 *Bairro/Cidade:* ${bairro}\n` +
+                                `🌱 *Terreno:* ${tamanho}\n` +
+                                `📅 *Data desejada:* ${dataFormatada}`;
+
+                // 5. Codificar para URL
+                const encodedMessage = encodeURIComponent(message);
+                
+                // 6. Criar Link e Abrir
+                const whatsappUrl = `https://wa.me/${COMPANY_PHONE}?text=${encodedMessage}`;
+                
+                window.open(whatsappUrl, '_blank');
+            });
+
+            // --- CONFIGURAÇÃO BOTÃO FLUTUANTE ---
+            // Abre o WhatsApp direto apenas com um "Olá"
+            floatBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const msg = encodeURIComponent("Olá, gostaria de agendar um orçamento.");
+                window.open(`https://wa.me/${COMPANY_PHONE}?text=${msg}`, '_blank');
+            });
+
+        });
+    </script>
+</body>
+</html>
