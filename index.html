@@ -126,7 +126,7 @@
             .hero h1 { font-size: 3rem; }
         }
 
-        /* --- COMO FUNCIONA (MODIFICADO) --- */
+        /* --- COMO FUNCIONA (Horizontal Mobile) --- */
         .how-it-works {
             background-color: var(--white);
         }
@@ -139,22 +139,21 @@
 
         .steps-grid {
             display: flex;
-            /* Força horizontal no mobile */
-            flex-direction: row; 
+            flex-direction: row; /* Força horizontal */
             justify-content: space-between;
             align-items: flex-start;
-            position: relative; /* Necessário para a linha */
+            position: relative;
         }
 
-        /* Linha conectora entre os ícones */
+        /* Linha conectora */
         .steps-grid::before {
             content: '';
             position: absolute;
-            top: 22px; /* Centralizado verticalmente com o ícone mobile */
+            top: 22px;
             left: 10%;
             right: 10%;
             height: 2px;
-            background-color: #E5E7EB; /* Cor da linha */
+            background-color: #E5E7EB;
             z-index: 1;
         }
 
@@ -162,60 +161,50 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            flex: 1; /* Divide o espaço igualmente */
-            z-index: 2; /* Fica acima da linha */
+            flex: 1;
+            z-index: 2;
         }
 
         .step-icon {
-            /* Tamanho reduzido no mobile */
             width: 45px;
             height: 45px;
             margin-bottom: 0.5rem;
             object-fit: contain;
-            background-color: var(--white); /* Fundo branco para cobrir a linha */
-            padding: 0 5px; /* Espaço lateral para a linha não colar no desenho */
+            background-color: var(--white);
+            padding: 0 5px;
             box-sizing: content-box;
         }
 
         .step-text {
-            /* Fonte reduzida no mobile */
-            font-size: 0.75rem; 
+            font-size: 0.75rem;
             color: #4B5563;
             text-align: center;
             line-height: 1.3;
             padding: 0 2px;
         }
 
-        /* Ajustes para Desktop (retorna ao tamanho normal) */
         @media(min-width: 768px) {
-            .step-icon {
-                width: 64px;
-                height: 64px;
-            }
-            
-            .step-text {
-                font-size: 1rem;
-            }
-
-            .steps-grid::before {
-                top: 32px; /* Reajusta a linha para o centro do ícone maior */
-            }
+            .step-icon { width: 64px; height: 64px; }
+            .step-text { font-size: 1rem; }
+            .steps-grid::before { top: 32px; }
         }
 
-        /* --- NOSSOS SERVIÇOS --- */
+        /* --- NOSSOS SERVIÇOS (MODIFICADO: 2x2 Mobile) --- */
         .services {
             background-color: #F3F4F6;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
+            /* Mobile: 2 colunas */
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 10px; /* Gap menor para mobile */
         }
 
         .service-card {
             background-color: var(--white);
-            padding: 2rem;
+            /* Padding menor para mobile */
+            padding: 1rem; 
             border-radius: var(--radius);
             box-shadow: var(--shadow-sm);
             display: flex;
@@ -231,20 +220,37 @@
         }
 
         .service-icon {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 1rem;
+            /* Ícone menor para mobile */
+            width: 40px; 
+            height: 40px;
+            margin-bottom: 0.8rem;
             object-fit: contain;
         }
 
         .service-title {
             font-weight: 600;
             color: #374151;
-            font-size: 1rem;
+            /* Fonte menor para mobile */
+            font-size: 0.9rem; 
+            line-height: 1.3;
         }
 
+        /* Tablet e Desktop: Restaura tamanhos originais */
         @media(min-width: 640px) {
-            .services-grid { grid-template-columns: 1fr 1fr; }
+            .services-grid { 
+                gap: 1.5rem; 
+            }
+            .service-card { 
+                padding: 2rem; 
+            }
+            .service-icon { 
+                width: 50px; 
+                height: 50px; 
+                margin-bottom: 1rem;
+            }
+            .service-title { 
+                font-size: 1rem; 
+            }
         }
 
         @media(min-width: 1024px) {
@@ -297,10 +303,9 @@
             box-shadow: 0 0 0 3px rgba(30, 127, 77, 0.1);
         }
         
-        /* Estilo para campo desativado (fixo) */
         .form-control:disabled, .form-control[readonly] {
-            background-color: #E5E7EB; /* Cinza claro */
-            color: #374151; /* Texto escuro */
+            background-color: #E5E7EB;
+            color: #374151;
             font-weight: 600;
             cursor: not-allowed;
             border-color: #D1D5DB;
@@ -663,5 +668,4 @@
         });
     </script>
 </body>
-</html>
 </html>
