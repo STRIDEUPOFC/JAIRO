@@ -49,7 +49,7 @@
             display: block;
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             color: var(--gray-title);
             font-weight: 700;
             line-height: 1.2;
@@ -97,10 +97,6 @@
             transform: scale(0.98);
         }
 
-        .btn-full {
-            width: 100%;
-        }
-
         /* --- HERO SECTION --- */
         .hero {
             background-color: #FAFAFA;
@@ -126,7 +122,7 @@
             .hero h1 { font-size: 3rem; }
         }
 
-        /* --- COMO FUNCIONA (MODIFICADO) --- */
+        /* --- COMO FUNCIONA --- */
         .how-it-works {
             background-color: var(--white);
         }
@@ -139,22 +135,20 @@
 
         .steps-grid {
             display: flex;
-            /* Força horizontal no mobile */
             flex-direction: row; 
             justify-content: space-between;
             align-items: flex-start;
-            position: relative; /* Necessário para a linha */
+            position: relative;
         }
 
-        /* Linha conectora entre os ícones */
         .steps-grid::before {
             content: '';
             position: absolute;
-            top: 22px; /* Centralizado verticalmente com o ícone mobile */
+            top: 22px;
             left: 10%;
             right: 10%;
             height: 2px;
-            background-color: #E5E7EB; /* Cor da linha */
+            background-color: #E5E7EB;
             z-index: 1;
         }
 
@@ -162,23 +156,21 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            flex: 1; /* Divide o espaço igualmente */
-            z-index: 2; /* Fica acima da linha */
+            flex: 1;
+            z-index: 2;
         }
 
         .step-icon {
-            /* Tamanho reduzido no mobile */
             width: 45px;
             height: 45px;
             margin-bottom: 0.5rem;
             object-fit: contain;
-            background-color: var(--white); /* Fundo branco para cobrir a linha */
-            padding: 0 5px; /* Espaço lateral para a linha não colar no desenho */
+            background-color: var(--white);
+            padding: 0 5px;
             box-sizing: content-box;
         }
 
         .step-text {
-            /* Fonte reduzida no mobile */
             font-size: 0.75rem; 
             color: #4B5563;
             text-align: center;
@@ -186,19 +178,16 @@
             padding: 0 2px;
         }
 
-        /* Ajustes para Desktop (retorna ao tamanho normal) */
         @media(min-width: 768px) {
             .step-icon {
                 width: 64px;
                 height: 64px;
             }
-            
             .step-text {
                 font-size: 1rem;
             }
-
             .steps-grid::before {
-                top: 32px; /* Reajusta a linha para o centro do ícone maior */
+                top: 32px;
             }
         }
 
@@ -251,89 +240,155 @@
             .services-grid { grid-template-columns: repeat(4, 1fr); }
         }
 
-        /* --- FORMULÁRIO (ORÇAMENTO) --- */
+        /* --- NOVA SEÇÃO DE ATENDIMENTO (ORÇAMENTO) --- */
         .budget-section {
             background-color: var(--green-light);
         }
 
         .budget-container {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
         .budget-title {
             color: var(--green-main);
-            margin-bottom: 2rem;
+            margin-bottom: 0.5rem;
             font-size: 1.75rem;
         }
 
-        .form-group {
-            margin-bottom: 1.2rem;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #4B5563;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #D1D5DB;
-            border-radius: var(--radius);
-            font-size: 1rem;
-            font-family: inherit;
-            outline: none;
-            transition: border-color 0.2s, box-shadow 0.2s;
-            background: var(--white);
-        }
-
-        .form-control:focus {
-            border-color: var(--green-main);
-            box-shadow: 0 0 0 3px rgba(30, 127, 77, 0.1);
-        }
-        
-        /* Estilo para campo desativado (fixo) */
-        .form-control:disabled, .form-control[readonly] {
-            background-color: #E5E7EB; /* Cinza claro */
-            color: #374151; /* Texto escuro */
-            font-weight: 600;
-            cursor: not-allowed;
-            border-color: #D1D5DB;
-        }
-
-        /* Radio Buttons Custom Style */
-        .radio-group {
+        .attendant-options {
             display: flex;
-            gap: 1rem;
-            background: var(--white);
-            padding: 0.8rem;
-            border-radius: var(--radius);
-            border: 1px solid #D1D5DB;
-            justify-content: space-around;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+            margin-top: 2rem;
         }
 
-        .radio-option {
+        .attendant-card {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
+            justify-content: space-between;
+            background: var(--white);
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
         }
 
-        .radio-option input[type="radio"] {
-            accent-color: var(--green-main);
-            width: 1.2rem;
-            height: 1.2rem;
-            cursor: pointer;
+        .attendant-card:hover {
+            transform: translateY(-3px);
         }
 
-        .radio-option span {
+        /* Matheus - Principal */
+        .primary-attendant {
+            padding: 1.5rem 2rem;
+            border: 2px solid var(--green-main);
+            box-shadow: 0 4px 15px rgba(30, 127, 77, 0.15);
+            max-width: 600px;
+        }
+
+        .primary-attendant:hover {
+            box-shadow: 0 6px 20px rgba(30, 127, 77, 0.25);
+        }
+
+        /* Jairo - Secundário */
+        .secondary-attendant {
+            padding: 1rem 1.5rem;
+            border: 1px solid #D1D5DB;
+            box-shadow: var(--shadow-sm);
+            max-width: 450px;
+            opacity: 0.9;
+        }
+
+        .secondary-attendant:hover {
+            box-shadow: var(--shadow-md);
+            opacity: 1;
+        }
+
+        .attendant-avatar {
+            width: 64px;
+            height: 64px;
+            background-color: var(--green-main);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .attendant-avatar.small {
+            width: 48px;
+            height: 48px;
+            font-size: 1.25rem;
+            background-color: #9CA3AF;
+        }
+
+        .attendant-info {
+            flex-grow: 1;
+            text-align: left;
+            margin-left: 1.5rem;
+        }
+
+        .primary-attendant h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .primary-attendant p {
             font-size: 0.95rem;
-            color: #374151;
+            color: var(--green-main);
+            font-weight: 500;
+        }
+
+        .secondary-attendant h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .secondary-attendant p {
+            font-size: 0.85rem;
+            color: var(--gray-text);
+        }
+
+        .btn-attendant {
+            background-color: var(--green-main);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        .btn-attendant-outline {
+            color: var(--gray-title);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: 1px solid #D1D5DB;
+            background-color: #F9FAFB;
+            white-space: nowrap;
+        }
+
+        /* Responsividade dos Cards de Atendimento */
+        @media(max-width: 640px) {
+            .attendant-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            .attendant-info {
+                margin-left: 0;
+                text-align: center;
+            }
+            .primary-attendant {
+                padding: 2rem 1.5rem;
+            }
         }
 
         /* --- ANTES E DEPOIS --- */
@@ -422,7 +477,7 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #25D366; /* Cor oficial WhatsApp */
+            background-color: #25D366;
             color: white;
             padding: 12px 24px;
             border-radius: 50px;
@@ -445,8 +500,6 @@
             height: 24px;
         }
 
-        /* Helpers para texto auxiliar */
-        .text-sm { font-size: 0.875rem; }
         .text-gray { color: #6B7280; }
 
     </style>
@@ -508,48 +561,29 @@
     <section id="orcamento" class="budget-section section-padding">
         <div class="container text-center budget-container">
             <h2 class="budget-title">Solicite seu Orçamento</h2>
+            <p class="text-gray">Atendimento rápido, serviço limpo e grama sempre no ponto certo. Escolha quem vai te atender hoje:</p>
             
-            <form id="contactForm">
-                <div class="form-group">
-                    <input type="text" id="nome" class="form-control" placeholder="Nome" required>
-                </div>
-
-                <div class="form-group">
-                    <input type="tel" id="whatsapp" class="form-control" placeholder="WhatsApp (somente números)" required>
-                </div>
-
-                <div class="form-group">
-                    <input type="text" id="bairro" class="form-control" placeholder="Digite seu Bairro" required>
-                </div>
-
-                <div class="form-group">
-                    <input type="text" class="form-control" value="AMAMBAI-MS" readonly>
-                </div>
-                <div class="form-group">
-                    <label>Tamanho do terreno:</label>
-                    <div class="radio-group">
-                        <label class="radio-option">
-                            <input type="radio" name="tamanho" value="Pequeno" checked>
-                            <span>Pequeno</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="tamanho" value="Médio">
-                            <span>Médio</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="tamanho" value="Grande">
-                            <span>Grande</span>
-                        </label>
+            <div class="attendant-options">
+                
+                <a href="https://wa.me/556798929591?text=Ol%C3%A1%2C%20Matheus!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20jardinagem%20em%20Amambai." target="_blank" class="attendant-card primary-attendant">
+                    <div class="attendant-avatar">M</div>
+                    <div class="attendant-info">
+                        <h3>Matheus</h3>
+                        <p>Atendimento Principal</p>
                     </div>
-                </div>
+                    <span class="btn-attendant">Falar com Matheus</span>
+                </a>
 
-                <div class="form-group">
-                    <input type="date" id="data" class="form-control" title="Data Desejada">
-                </div>
+                <a href="https://wa.me/556700000000?text=Ol%C3%A1%2C%20Jairo!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20jardinagem%20em%20Amambai." target="_blank" class="attendant-card secondary-attendant">
+                    <div class="attendant-avatar small">J</div>
+                    <div class="attendant-info">
+                        <h4>Jairo</h4>
+                        <p>Atendimento Secundário</p>
+                    </div>
+                    <span class="btn-attendant-outline">Falar com Jairo</span>
+                </a>
 
-                <button type="submit" class="btn btn-full" style="margin-top: 1rem;">Quero meu orçamento</button>
-            </form>
-            <p class="text-sm text-gray" style="margin-top: 1rem;">Atendimento rápido, serviço limpo e grama sempre no ponto certo.</p>
+            </div>
         </div>
     </section>
 
@@ -596,72 +630,21 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             
-            // --- CONFIGURAÇÃO ---
-            // Coloque o número do WhatsApp da empresa aqui (formato internacional sem +)
-            // Ex: 55 + DDD + Numero. Ex: 5567999999999
-            const COMPANY_PHONE = "556798929591"; 
+            // --- CONFIGURAÇÃO BOTÃO FLUTUANTE ---
+            // Coloque o número do atendimento principal aqui
+            const DEFAULT_PHONE = "556798929591"; 
 
-            const form = document.getElementById('contactForm');
             const floatBtn = document.getElementById('floatBtn');
 
-            // --- FUNÇÃO DE ENVIO DO FORMULÁRIO ---
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                // 1. Capturar valores
-                const nome = document.getElementById('nome').value.trim();
-                const whatsapp = document.getElementById('whatsapp').value.trim();
-                const bairro = document.getElementById('bairro').value.trim();
-                const tamanho = document.querySelector('input[name="tamanho"]:checked').value;
-                const data = document.getElementById('data').value;
-
-                // 2. Validação básica
-                if (!nome) {
-                    alert("Por favor, preencha seu nome.");
-                    return;
-                }
-                
-                // Remove caracteres não numéricos do telefone
-                const cleanPhone = whatsapp.replace(/\D/g, '');
-                if (cleanPhone.length < 8) {
-                    alert("Por favor, insira um número de WhatsApp válido.");
-                    return;
-                }
-
-                // 3. Formatar data (opcional, para ficar bonito PT-BR)
-                let dataFormatada = "A combinar";
-                if(data) {
-                    const d = new Date(data);
-                    dataFormatada = d.toLocaleDateString('pt-BR');
-                }
-
-                // 4. Montar Mensagem - ALTERADO PARA INCLUIR CIDADE FIXA
-                const message = `Olá! Quero solicitar um orçamento de jardinagem.\n\n` +
-                                `👤 *Nome:* ${nome}\n` +
-                                `📱 *WhatsApp:* ${whatsapp}\n` +
-                                `📍 *Local:* ${bairro} - AMAMBAI/MS\n` +
-                                `🌱 *Terreno:* ${tamanho}\n` +
-                                `📅 *Data desejada:* ${dataFormatada}`;
-
-                // 5. Codificar para URL
-                const encodedMessage = encodeURIComponent(message);
-                
-                // 6. Criar Link e Abrir
-                const whatsappUrl = `https://wa.me/${COMPANY_PHONE}?text=${encodedMessage}`;
-                
-                window.open(whatsappUrl, '_blank');
-            });
-
-            // --- CONFIGURAÇÃO BOTÃO FLUTUANTE ---
-            // Abre o WhatsApp direto apenas com um "Olá"
             floatBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 const msg = encodeURIComponent("Olá, gostaria de agendar um orçamento em Amambai.");
-                window.open(`https://wa.me/${COMPANY_PHONE}?text=${msg}`, '_blank');
+                window.open(`https://wa.me/${DEFAULT_PHONE}?text=${msg}`, '_blank');
             });
-
+            
+            // O formulário antigo foi removido, então o script de envio de form
+            // não é mais necessário aqui, deixando o site ainda mais leve!
         });
     </script>
 </body>
-</html>
 </html>
